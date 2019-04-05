@@ -1,0 +1,54 @@
+<mat-toolbar color="accent" layout-align-md="center end">
+  <span class="demo-toolbar">infinite Scroll Example</span>
+</mat-toolbar>
+<mat-card>
+  <div class="container">
+    <div class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"
+      [scrollWindow]="false" style="height: 400px; overflow-y: scroll;">
+
+      <table mat-table [dataSource]="allUser">
+        <ng-container matColumnDef="EmpID">
+              <th mat-header-cell *matHeaderCellDef> EmpID </th>
+              <td mat-cell *matCellDef="let element"> {{element.EmpID}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="FirstName">
+          <th mat-header-cell *matHeaderCellDef> FirstName </th>
+          <td mat-cell *matCellDef="let element"> {{element.FirstName}} </td>
+        </ng-container>
+       
+        <ng-container matColumnDef="LastName">
+          <th mat-header-cell *matHeaderCellDef> LastName </th>
+          <td mat-cell *matCellDef="let element"> {{element.LastName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Gender">
+          <th mat-header-cell *matHeaderCellDef> Gender </th>
+          <td mat-cell *matCellDef="let element"> {{element.Gender}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="Email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+        </ng-container>
+       <!-- 
+        <ng-container matColumnDef="Gender">
+          <th mat-header-cell *matHeaderCellDef> Gender </th>
+          <td mat-cell *matCellDef="let element"> {{element.Gender ==0? 'Male' : 'Female'}} </td>
+        </ng-container> -->
+       <!-- 
+        <ng-container matColumnDef="Address">
+          <th mat-header-cell *matHeaderCellDef> Address </th>
+          <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
+        </ng-container>
+        <ng-container matColumnDef="MobileNo">
+          <th mat-header-cell *matHeaderCellDef> MobileNo </th>
+          <td mat-cell *matCellDef="let element"> {{element.MobileNo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="PinCode">
+          <th mat-header-cell *matHeaderCellDef> PinCode </th>
+          <td mat-cell *matCellDef="let element"> {{element.PinCode}} </td>
+        </ng-container> -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>  
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>  
+      </table> 
