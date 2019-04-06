@@ -1,0 +1,9 @@
+runtime: nodejs8
+env: standard
+service: angpoc
+handlers:
+- url: /
+  static_files: dist/index.html
+  upload: dist/index.html
+- url: /
+  static_dir: dist
