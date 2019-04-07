@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  url = "http://localhost:63278/";  
+  url = "http://104.197.176.78:8080/";  
   constructor(private http: HttpClient) { }  
 UserDetails(page : number): Observable<User[]> {
-  return this.http.get<User[]>(this.url + 'Api/AngularAPI/AllUserDetails?pageNumber=' + page);
+  return this.http.get<User[]>(this.url + 'api/employees?pageNumber=' + page);
   }
 }

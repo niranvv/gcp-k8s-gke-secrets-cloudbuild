@@ -1,7 +1,9 @@
 export class User {
-    EmpID: number;
-    FirstName: string;
-    LastName: string;
-    Gender: string;
-    Email: string;
+    id: number;
+    firstname: string;
+    lastname: string;
+    gender: string;
+    dob: Date;
+    email: string;
+    city: string;
 }

@@ -11,7 +11,7 @@ export class UserComponent implements OnInit {
   allUser: User[] = [];
   page: number = 1;
   constructor(private service: UserService) { }
-  displayedColumns: string[] = ['EmpID', 'FirstName', 'LastName','Gender', 'Email'];
+  displayedColumns: string[] = ['id', 'firstname', 'lastname','gender','dob', 'email','city'];
   ngOnInit() {
     this.AllUserDetails();
   }
