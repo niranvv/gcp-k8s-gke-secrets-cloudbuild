@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Created by niran on 27/04/19.
  */
+ CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
 public class EmployeeController {

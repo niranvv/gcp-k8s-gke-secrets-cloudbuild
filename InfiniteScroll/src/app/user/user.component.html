@@ -7,29 +7,39 @@
       [scrollWindow]="false" style="height: 400px; overflow-y: scroll;">
 
       <table mat-table [dataSource]="allUser">
-        <ng-container matColumnDef="EmpID">
+        <ng-container matColumnDef="id">
               <th mat-header-cell *matHeaderCellDef> EmpID </th>
-              <td mat-cell *matCellDef="let element"> {{element.EmpID}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="FirstName">
+        <ng-container matColumnDef="firstname">
           <th mat-header-cell *matHeaderCellDef> FirstName </th>
-          <td mat-cell *matCellDef="let element"> {{element.FirstName}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
         </ng-container>
        
-        <ng-container matColumnDef="LastName">
+        <ng-container matColumnDef="lastname">
           <th mat-header-cell *matHeaderCellDef> LastName </th>
-          <td mat-cell *matCellDef="let element"> {{element.LastName}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="Gender">
+        <ng-container matColumnDef="gender">
           <th mat-header-cell *matHeaderCellDef> Gender </th>
-          <td mat-cell *matCellDef="let element"> {{element.Gender}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+        </ng-container>
+		
+		 <ng-container matColumnDef="dob">
+          <th mat-header-cell *matHeaderCellDef> DateOfBirth </th>
+          <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
         </ng-container>
         
-        <ng-container matColumnDef="Email">
+        <ng-container matColumnDef="email">
           <th mat-header-cell *matHeaderCellDef> Email </th>
-          <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+		
+        <ng-container matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef> City </th>
+          <td mat-cell *matCellDef="let element"> {{element.city}} </td>
         </ng-container>
        <!-- 
         <ng-container matColumnDef="Gender">
