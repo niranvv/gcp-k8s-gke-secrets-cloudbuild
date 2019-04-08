@@ -1,8 +1,16 @@
 <mat-toolbar color="accent" layout-align-md="center end">
-  <span class="demo-toolbar">infinite Scroll Example</span>
+  <span class="demo-toolbar">Test Angular Project in GCP with Infinite Scroll</span>\
 </mat-toolbar>
 <mat-card>
   <div class="container">
+      <div class="row">
+        <h5>Technologies Used: </h5>
+            <ul>
+                <li>Dockerized Angular 7 App with <a href="https://material.angular.io/">Angular Material</a> in One Kubernetes Cluster</li>
+                <li>Dockerized Java API (Spring Boot, JPA, Hibernate Restful CRUD API) on another Kubernetes Cluster</li>
+                <li>Cloud SQL</li>
+            </ul>
+    </div>
     <div class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"
       [scrollWindow]="false" style="height: 400px; overflow-y: scroll;">
 
@@ -29,7 +37,7 @@
 		
 		 <ng-container matColumnDef="dob">
           <th mat-header-cell *matHeaderCellDef> DateOfBirth </th>
-          <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+          <td mat-cell *matCellDef="let element"> {{ element.dob | date }} </td>
         </ng-container>
         
         <ng-container matColumnDef="email">
