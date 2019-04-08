@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  url = "http://35.232.243.162:8080/";  
+  url = "http://35.239.242.232:8080/";  
   constructor(private http: HttpClient) { }  
 UserDetails(page : number): Observable<User[]> {
   return this.http.get<User[]>(this.url + 'api/employees?pageNumber=' + page);
