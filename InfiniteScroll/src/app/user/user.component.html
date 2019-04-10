@@ -8,10 +8,11 @@
             <ul>
                 <li>Dockerized Angular 7 App with <a target=_blank href="https://material.angular.io/">Angular Material</a> in One Kubernetes Cluster</li>
                 <li>Dockerized Java API (Spring Boot, JPA, Hibernate Restful CRUD API) on another Kubernetes Cluster</li>
-                <li>Cloud SQL</li>
+                <li>Cloud SQL (around 1,00,000 records)</li>
             </ul>
     </div>
-    <div class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"
+    <div class="row">Please scroll down to load more records.<br />Records Loaded till now: {{recordsLoaded}}</div>
+    <div class="row" infiniteScroll [infiniteScrollDistance]="1800" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"
       [scrollWindow]="false" style="height: 400px; overflow-y: scroll;">
 
       <table mat-table [dataSource]="allUser">
@@ -35,7 +36,7 @@
           <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
         </ng-container>
 		
-		 <ng-container matColumnDef="dob">
+		    <ng-container matColumnDef="dob">
           <th mat-header-cell *matHeaderCellDef> DateOfBirth </th>
           <td mat-cell *matCellDef="let element"> {{ element.dob | date }} </td>
         </ng-container>
@@ -49,24 +50,9 @@
           <th mat-header-cell *matHeaderCellDef> City </th>
           <td mat-cell *matCellDef="let element"> {{element.city}} </td>
         </ng-container>
-       <!-- 
-        <ng-container matColumnDef="Gender">
-          <th mat-header-cell *matHeaderCellDef> Gender </th>
-          <td mat-cell *matCellDef="let element"> {{element.Gender ==0? 'Male' : 'Female'}} </td>
-        </ng-container> -->
-       <!-- 
-        <ng-container matColumnDef="Address">
-          <th mat-header-cell *matHeaderCellDef> Address </th>
-          <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
-        </ng-container>
-        <ng-container matColumnDef="MobileNo">
-          <th mat-header-cell *matHeaderCellDef> MobileNo </th>
-          <td mat-cell *matCellDef="let element"> {{element.MobileNo}} </td>
-        </ng-container>
-        <ng-container matColumnDef="PinCode">
-          <th mat-header-cell *matHeaderCellDef> PinCode </th>
-          <td mat-cell *matCellDef="let element"> {{element.PinCode}} </td>
-        </ng-container> -->
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>  
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>  
       </table> 
+
+      

@@ -9,7 +9,8 @@ import { UserService } from '../service/user.service';
 })
 export class UserComponent implements OnInit {
   allUser: User[] = [];
-  page: number = 1;
+  page: number = 0;
+  recordsLoaded: number = 0;
   constructor(private service: UserService) { }
   displayedColumns: string[] = ['id', 'firstname', 'lastname','gender','dob', 'email','city'];
   ngOnInit() {
@@ -18,7 +19,10 @@ export class UserComponent implements OnInit {
 
   AllUserDetails() {
     this.service.UserDetails(this.page).subscribe((res) => {
-      this.allUser = res;
+      console.log(res.content);
+      this.allUser=this.allUser.concat(res.content);
+      //console.log(this.allUser);
+      this.recordsLoaded=this.allUser.length;
     });
   }
 

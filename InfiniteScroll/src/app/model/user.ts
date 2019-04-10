@@ -7,3 +7,11 @@ export class User {
     email: string;
     city: string;
 }
+
+export class PageUser {
+    content : User[];
+    totalElements : number;
+    totalPages: number;
+    size: number;
+
+}

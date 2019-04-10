@@ -4,9 +4,11 @@ import com.ust.efx.poc.usermanagement.exception.ResourceNotFoundException;
 import com.ust.efx.poc.usermanagement.model.Employee;
 import com.ust.efx.poc.usermanagement.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -21,9 +23,16 @@ public class EmployeeController {
     @Autowired
     EmployeeRepository employeeRepository;
 
+//    @GetMapping("/employees")
+//    public List<Employee> getAllEmployees() {
+//        return employeeRepository.findAll();
+//    }
+
     @GetMapping("/employees")
-    public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+    public Page<Employee> getAllEmployees(@RequestParam int pagenumber,@RequestParam int size) {
+        Pageable pageable = PageRequest.of(pagenumber, size);
+        Page<Employee> pagedEmployees = employeeRepository.findAll(pageable);
+        return pagedEmployees;
     }
 
     @PostMapping("/employees")

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';  
-import { User } from '../model/user';
+import { User, PageUser } from '../model/user';
 import { Observable } from 'rxjs';
 
 
@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  url = "http://35.239.242.232:8080/";  
+  url = "http://localhost:8080/";  
   constructor(private http: HttpClient) { }  
-UserDetails(page : number): Observable<User[]> {
-  return this.http.get<User[]>(this.url + 'api/employees?pageNumber=' + page);
+UserDetails(page : number): Observable<PageUser> {
+  return this.http.get<PageUser>(this.url + 'api/employees?pagenumber=' + page + "&size=50");
   }
 }
