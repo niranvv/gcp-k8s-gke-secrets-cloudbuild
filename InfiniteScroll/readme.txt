@@ -88,4 +88,7 @@ kubectl expose deployment employee-angular-web-server --type="LoadBalancer"
 kubectl get service employee-angular-web-server
 curl http://[EXTERNAL-IP]:80
 
-kubectl rolling-update employee-angular-web-server --image=employee-angular-web-server
+kubectl set image deployment employee-angular-web-server employee-angular-web-server=gcr.io/learngcpniran/employee-angular-web:latest
+kubectl rollout status deployment employee-angular-web-server
+kubectl get deployments
+
