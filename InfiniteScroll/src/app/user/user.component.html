@@ -12,7 +12,7 @@
             </ul>
     </div>
     <div class="row">Please scroll down to load more records.<br />Records Loaded till now: {{recordsLoaded}}</div>
-    <div class="row" infiniteScroll [infiniteScrollDistance]="1800" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"
+    <div class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="150" (scrolled)="onScroll()"
       [scrollWindow]="false" style="height: 400px; overflow-y: scroll;">
 
       <table mat-table [dataSource]="allUser">
