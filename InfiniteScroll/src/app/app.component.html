@@ -2,10 +2,7 @@
     <span class="demo-toolbar">Test Angular Project in GCP with Infinite Scroll</span>
 </mat-toolbar>
 <div class="container">
-    <nav>
-        <a routerLink="/home" routerLinkActive="active" class="btn btn-info m-1">Home[Open]</a>
-        <a routerLink="/users" routerLinkActive="active" class="btn btn-warning m-1">User[Secured]</a>
-    </nav>
+    <app-navigation></app-navigation>
     <mat-card>
         <div *ngIf="givenName">
             <h2>Hi, {{givenName}}!</h2>
@@ -13,6 +10,7 @@
         </div>
 
         <div *ngIf="!givenName">
+            <h3>Please click the below button to Login:</h3>
             <button (click)="login()" class="btn btn-primary">Login</button>
         </div>
         <router-outlet></router-outlet>

@@ -13,5 +13,4 @@ export class PageUser {
     totalElements : number;
     totalPages: number;
     size: number;
-
 }

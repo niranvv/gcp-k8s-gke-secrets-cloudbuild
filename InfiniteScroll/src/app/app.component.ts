@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { OAuthService, JwksValidationHandler, AuthConfig } from 'angular-oauth2-oidc';
+import { Router } from '@angular/router';
 
 export const authConfig: AuthConfig = {
   issuer: 'https://accounts.google.com',
@@ -20,7 +21,7 @@ export const authConfig: AuthConfig = {
 })
 export class AppComponent {
   title = 'InfiniteScroll';
-  constructor(private oauthService: OAuthService) {
+  constructor(private oauthService: OAuthService, private router: Router) {
     this.oauthService.configure(authConfig);
     this.oauthService.tokenValidationHandler = new JwksValidationHandler();
     this.oauthService.loadDiscoveryDocumentAndTryLogin();
@@ -28,10 +29,12 @@ export class AppComponent {
 
   login() {
     this.oauthService.initImplicitFlow();
+    this.router.navigate(['/users']);
   }
 
   logout() {
     this.oauthService.logOut();
+    this.router.navigate(['/not-logged-in']);
   }
 
   get givenName() {

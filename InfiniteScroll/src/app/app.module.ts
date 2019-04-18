@@ -14,18 +14,26 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AngularmaterialModule } from './material/angularmaterial/angularmaterial.module';
 import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router';
+import { NavigationComponent } from './navigation/navigation.component';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { AuthGuard } from './shared';
+import { NotLoggedInComponent } from './not-logged-in/not-logged-in.component';
 
-const appRoutes: Routes=[
-  {path:'home',component: HomeComponent},
-  {path:'users',component: UserComponent},
+const appRoutes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'not-logged-in', component: NotLoggedInComponent },
+  { path: 'users', component: UserComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    HomeComponent
+    HomeComponent,
+    NavigationComponent,
+    NotLoggedInComponent
   ],
   imports: [
     BrowserModule,
