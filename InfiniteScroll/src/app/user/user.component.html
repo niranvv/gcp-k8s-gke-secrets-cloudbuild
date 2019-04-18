@@ -1,19 +1,6 @@
-<mat-toolbar color="accent" layout-align-md="center end">
-  <span class="demo-toolbar">Test Angular Project in GCP with Infinite Scroll</span>
-</mat-toolbar>
-<mat-card>
+
   <div class="container">
-    <div class="row">
-      <mat-card>
-        <h5>Technologies Used: </h5>
-        <ul>
-          <li>Dockerized Angular 7 App with <a target=_blank href="https://material.angular.io/">Angular Material</a> in
-            One Kubernetes Cluster</li>
-          <li>Dockerized Java API (Spring Boot, JPA, Hibernate Restful CRUD API) on another Kubernetes Cluster</li>
-          <li>Cloud SQL (around 1,00,000 records)</li>
-        </ul>
-      </mat-card>
-    </div>
+    
     <div class="row">Please scroll down to load more records.<br />Records Loaded till now: {{recordsLoaded}}</div>
 
     <div class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="150" (scrolled)="onScroll()"
