@@ -2,8 +2,22 @@
   <h5>Technologies Used: </h5>
   <ul>
     <li>Dockerized Angular 7 App with <a target=_blank href="https://material.angular.io/">Angular Material</a> in
-      One Kubernetes Cluster</li>
+      One Kubernetes Cluster. The Angular App has the following features
+      <ul>
+        <li>Authentication using <a href="https://openid.net/connect/" target="_blank">OpenID Connect</a></li>
+        <li>Sign-in with Google - Used <a href="https://developers.google.com/identity/protocols/OpenIDConnect"
+            target="_blank">OAuth 2.0 option provided by Google API Console</a></li>
+        <li>Only Logged in users will be able to see the grid. It will load the data dynamically once the user scroll
+          down.</li>
+      </ul>
+    </li>
     <li>Dockerized Java API (Spring Boot, JPA, Hibernate Restful CRUD API) on another Kubernetes Cluster</li>
+    <li>Continuous Integration & Continuous Delivery done using the following:
+      <ul>
+        <li>Jenkins for CI</li>
+        <li>Spinnaker for CD</li>
+      </ul>
+    </li>
     <li>Cloud SQL (around 1,00,000 records)</li>
   </ul>
 </mat-card>
