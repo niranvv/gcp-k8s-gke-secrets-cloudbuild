@@ -5,9 +5,11 @@
     <app-navigation></app-navigation>
     <mat-card>
         <div *ngIf="givenName">
+            <div *ngIf="profilePicPath"><img src='{{profilePicPath}}' class="float-right"/></div>
             <h2>Hi, {{givenName}}!</h2>
             <button (click)="logout()" class="btn btn-primary">Logout</button>
         </div>
+
 
         <div *ngIf="!givenName">
             <h3>Please click the below button to Login:</h3>

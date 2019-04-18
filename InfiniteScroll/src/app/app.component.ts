@@ -10,8 +10,8 @@ export const authConfig: AuthConfig = {
   clientId: '831923798914-nfo49p29s4kce3dcbakc930riv2rq4d2.apps.googleusercontent.com',
   strictDiscoveryDocumentValidation: false,
   //scope: 'openid profile email',
-  //showDebugInformation: true,
-  //sessionChecksEnabled: true
+  showDebugInformation: true,
+  sessionChecksEnabled: true
 };
 
 @Component({
@@ -39,10 +39,20 @@ export class AppComponent {
 
   get givenName() {
     const claims = this.oauthService.getIdentityClaims();
+    //console.log(claims);
     if (!claims) {
       return null;
     }
     return claims['name'];
+  }
+
+  get profilePicPath(){
+    const claims = this.oauthService.getIdentityClaims();
+    //console.log(claims);
+    if (!claims) {
+      return null;
+    }
+    return claims['picture'];
   }
 }
 
