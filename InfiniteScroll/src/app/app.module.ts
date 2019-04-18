@@ -12,12 +12,11 @@ import { MatInputModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AngularmaterialModule } from './material/angularmaterial/angularmaterial.module';
-import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 const appRoutes: Routes=[
-  {path:'login',component: LoginComponent},
   {path:'home',component: HomeComponent},
   {path:'users',component: UserComponent},
 ];
@@ -26,7 +25,6 @@ const appRoutes: Routes=[
   declarations: [
     AppComponent,
     UserComponent,
-    LoginComponent,
     HomeComponent
   ],
   imports: [
@@ -40,6 +38,7 @@ const appRoutes: Routes=[
     AngularmaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    OAuthModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only

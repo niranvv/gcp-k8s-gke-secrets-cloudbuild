@@ -1,4 +1,17 @@
 import { Component } from '@angular/core';
+import { OAuthService, JwksValidationHandler, AuthConfig } from 'angular-oauth2-oidc';
+
+export const authConfig: AuthConfig = {
+  issuer: 'https://accounts.google.com',
+  redirectUri: window.location.origin,
+  ////URL of the SPA to redirect the user after silent refresh
+  //silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
+  clientId: '831923798914-nfo49p29s4kce3dcbakc930riv2rq4d2.apps.googleusercontent.com',
+  strictDiscoveryDocumentValidation: false,
+  //scope: 'openid profile email',
+  //showDebugInformation: true,
+  //sessionChecksEnabled: true
+};
 
 @Component({
   selector: 'app-root',
@@ -7,4 +20,26 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'InfiniteScroll';
+  constructor(private oauthService: OAuthService) {
+    this.oauthService.configure(authConfig);
+    this.oauthService.tokenValidationHandler = new JwksValidationHandler();
+    this.oauthService.loadDiscoveryDocumentAndTryLogin();
+  }
+
+  login() {
+    this.oauthService.initImplicitFlow();
+  }
+
+  logout() {
+    this.oauthService.logOut();
+  }
+
+  get givenName() {
+    const claims = this.oauthService.getIdentityClaims();
+    if (!claims) {
+      return null;
+    }
+    return claims['name'];
+  }
 }
+

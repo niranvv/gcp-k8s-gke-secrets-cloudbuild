@@ -3,11 +3,18 @@
 </mat-toolbar>
 <div class="container">
     <nav>
-        <a routerLink="/login" routerLinkActive="active" class="btn btn-primary  m-1">Login</a>
         <a routerLink="/home" routerLinkActive="active" class="btn btn-info m-1">Home[Open]</a>
         <a routerLink="/users" routerLinkActive="active" class="btn btn-warning m-1">User[Secured]</a>
     </nav>
     <mat-card>
+        <div *ngIf="givenName">
+            <h2>Hi, {{givenName}}!</h2>
+            <button (click)="logout()" class="btn btn-primary">Logout</button>
+        </div>
+
+        <div *ngIf="!givenName">
+            <button (click)="login()" class="btn btn-primary">Login</button>
+        </div>
         <router-outlet></router-outlet>
     </mat-card>
 </div>
