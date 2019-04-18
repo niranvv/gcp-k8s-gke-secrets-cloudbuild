@@ -92,3 +92,16 @@ kubectl set image deployment employee-angular-web-server employee-angular-web-se
 kubectl rollout status deployment employee-angular-web-server
 kubectl get deployments
 
+============COnsolidated===============
+ng build --prod
+docker image build -t employee-angular-web:0.8.1 .
+docker tag employee-angular-web:0.8.1 gcr.io/learngcpniran/employee-angular-web:0.8.1
+docker images
+docker push gcr.io/learngcpniran/employee-angular-web:0.8.1
+docker stop $(docker ps -q)
+docker rm $(docker ps -aq)
+kubectl set image deployment employee-angular-web-server employee-angular-web-server=gcr.io/learngcpniran/employee-angular-web:0.8.1
+kubectl rollout status deployment employee-angular-web-server
+kubectl get deployments
+
+
