@@ -53,29 +53,29 @@ nginx.conf
     }
 
 $ ng build --prod
-$ docker image build -t employee-angular-web:latest .
+$ docker image build -t employee-angular-web:0.1 .
 $ docker image ls
-$ docker run -p 3000:80 --rm employee-angular-web:latest
+$ docker run -p 3000:80 --rm employee-angular-web:0.1
 
-$ docker run -d  -p 8080:8080 employee-angular-web:latest
+$ docker run -d  -p 8080:8080 employee-angular-web:0.1
 $ docker ps
-$ docker history employee-angular-web:latest
+$ docker history employee-angular-web:0.1
 $ docker stop [container_id]
 
-docker tag employee-angular-web:latest gcr.io/efx-pocs-niran/employee-angular-web:latest
+docker tag employee-angular-web:0.1 gcr.io/efx-pocs-niran/employee-angular-web:0.1
 docker images
-docker push gcr.io/efx-pocs-niran/employee-angular-web:latest
+docker push gcr.io/efx-pocs-niran/employee-angular-web:0.1
 docker stop $(docker ps -q)
 docker rm $(docker ps -aq)
 
 #To Test Optional - Remove Child images
-docker rmi employee-angular-web:latest gcr.io/efx-pocs-niran/employee-angular-web employee-angular-web:latest
+docker rmi employee-angular-web:0.1 gcr.io/efx-pocs-niran/employee-angular-web employee-angular-web:0.1
 docker rmi node:6
 docker rmi $(docker images -aq) # remove remaining images
 docker images
 #Now we have pseudo env.. Test docker
-docker pull gcr.io/efx-pocs-niran/employee-angular-web:latest
-docker run -p 3000:80 -d gcr.io/efx-pocs-niran/employee-angular-web:latest
+docker pull gcr.io/efx-pocs-niran/employee-angular-web:0.1
+docker run -p 3000:80 -d gcr.io/efx-pocs-niran/employee-angular-web:0.1
 curl http://localhost:8080
 
 
@@ -83,12 +83,12 @@ curl http://localhost:8080
 gcloud config set compute/zone us-central1-a
 gcloud container clusters create [CLUSTER-NAME]
 gcloud container clusters get-credentials [CLUSTER-NAME]
-kubectl run employee-angular-web-server --image=gcr.io/efx-pocs-niran/employee-angular-web:latest --port 80
+kubectl run employee-angular-web-server --image=gcr.io/efx-pocs-niran/employee-angular-web:0.1 --port 80
 kubectl expose deployment employee-angular-web-server --type="LoadBalancer"
 kubectl get service employee-angular-web-server
 curl http://[EXTERNAL-IP]:80
 
-kubectl set image deployment employee-angular-web-server employee-angular-web-server=gcr.io/efx-pocs-niran/employee-angular-web:latest
+kubectl set image deployment employee-angular-web-server employee-angular-web-server=gcr.io/efx-pocs-niran/employee-angular-web:0.1
 kubectl rollout status deployment employee-angular-web-server
 kubectl get deployments
 
