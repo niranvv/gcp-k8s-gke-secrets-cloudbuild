@@ -7,7 +7,7 @@ export const authConfig: AuthConfig = {
   redirectUri: window.location.origin,
   ////URL of the SPA to redirect the user after silent refresh
   //silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
-  clientId: '705334005746-lo6h867d16drsj8v2rsmtl04l06ue5o9.apps.googleusercontent.com',
+  clientId: '705334005746-fjpmgtg7bujjpojqsa84nb5qngncclq6.apps.googleusercontent.com',
   strictDiscoveryDocumentValidation: false,
   scope: 'openid profile email',
   showDebugInformation: true,
