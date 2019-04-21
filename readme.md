@@ -89,9 +89,9 @@ Created based on [google code labs](https://codelabs.developers.google.com/codel
 
 
  ## Deploy Angular Application on the Container:
- 1. `npm install -g @angular/cli@latest
- 2. `npm install -g http-server
- 3. `cd InfiniteScroll/
+ 1. `npm install -g @angular/cli@latest`
+ 2. `npm install -g http-server`
+ 3. `cd InfiniteScroll/`
  4. `ng build --prod`
  5. To Test Prod Build `http-server ./dist`
  6. `docker image build -t employee-angular-web:0.1 .`
