@@ -15,7 +15,8 @@
 	<name>employee</name>
 	<description>Demo project for Spring Boot GCP</description>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>1.8</java.version>      
+		<start-class>com.ust.efx.employee.EmployeeApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -36,6 +37,7 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+        
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
