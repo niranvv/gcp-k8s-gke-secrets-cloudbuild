@@ -15,6 +15,6 @@ public class EmployeeApplication {
 	
   @GetMapping("/")
   public String hello() {
-    return "hello world!";
+    return "Hello and Welcome to the employee application. You can create a new Employee by making a POST request to /api/employees endpoint.";
   }
 }

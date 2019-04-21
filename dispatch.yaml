@@ -1,0 +1,3 @@
+dispatch:
+   - url: "gcp.niran.in/*"
+     service: angpoc
