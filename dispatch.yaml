@@ -1,3 +1,5 @@
 dispatch:
    - url: "gcp.niran.in/*"
      service: angpoc
+   - url: "niran.in/*"
+     service: niran
