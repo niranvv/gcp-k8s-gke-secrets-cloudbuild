@@ -75,6 +75,17 @@ Created based on [google code labs](https://codelabs.developers.google.com/codel
  1. `kubectl set image deployment employee-java-api-server employee-java-api-server=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:0.1.0`
  2. `kubectl rollout status deployment employee-java-api-server`
  3. `kubectl get deployments`
+ #### [Optional] To Test  after removing local Child images
+ 1. `docker stop $(docker ps -q)`
+ 2. `docker rm $(docker ps -aq)`
+ 3. `docker rmi employee-java-api:0.1.0 gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api employee-java-api:0.1.0`
+ 4. `docker rmi openjdk:8-jre-alpine`
+ 5. `docker rmi $(docker images -aq) --force # remove remaining images`
+ 6. `docker images`
+##### [Optional] Now we have pseudo env.. Test docker
+ 7. `docker pull gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:0.1.0`
+ 8. `docker run -p 8080:8080 -d gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:0.1.0`
+ 9. `curl http://localhost:8080`
 
  #### For permission issues
  * `chmod +x mvnw`
