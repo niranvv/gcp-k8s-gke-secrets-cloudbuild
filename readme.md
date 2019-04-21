@@ -112,7 +112,7 @@ Created based on [google code labs](https://codelabs.developers.google.com/codel
  20. `kubectl rollout status deployment employee-angular-web-server`
  21. `kubectl get deployments`
 
- #### Troubleshooting
+ #### Troubleshooting [Common]
  ##### For permission issues
  * `chmod +x mvnw`
 
