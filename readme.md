@@ -54,12 +54,13 @@ Created based on [google code labs](https://codelabs.developers.google.com/codel
  4. Test the image locally with the following command which will run a Docker container 
     as a daemon on port 8080 from your newly-created container image 
     `docker run -ti --rm -p 8080:8080 gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:v1`
- 5. Deploy your application to Kubernetes `kubectl run employee-java-api --image=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:v1 --port=8080`
+ 5. Deploy your application to Kubernetes `kubectl run employee-java-api-server --image=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:v1 --port=8080`
  6. `kubectl get deployments`
  7. `kubectl get pods`
- 8. `kubectl expose deployment employee-java-api --type=LoadBalancer`
+ 8. `kubectl expose deployment employee-java-api-server --type=LoadBalancer`
 ### Package the Java application as a Docker container [Option 2]
- 1. `mvn package`
+ 1. Package: `mvn package` & Run `java -jar target/employee-0.0.1-SNAPSHOT.war`
+    Alternatively, you can run the app without packaging it using: `mvn spring-boot:run`
  2. `docker image build -t employee-java-api:0.1.0 .`
  3. `docker tag employee-java-api:0.1.0 gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:0.1.0`
  4. `docker images`
