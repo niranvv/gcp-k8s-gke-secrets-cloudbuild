@@ -11,19 +11,23 @@ Hi! I'm **Niran**. This is a test project with Google Cloud
 Created based on [google code labs](https://codelabs.developers.google.com/codelabs/cloud-app-engine-springboot/index.html#0)
  1. `cd gae-std-java\gae-standard-example`
  2. Add App Engine Plugin in **pom.xml** add the below:
-     `<plugin>
+     ```
+     <plugin>
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>appengine-maven-plugin</artifactId>
         <version>1.3.2</version>
         <configuration>
           <version>1</version>
         </configuration>
-      </plugin>`
+      </plugin>
+      ```
  3. Add App Engine Descriptor at "**src/main/webapp/WEB-INF/appengine-web.xml**"
-   `<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
-     <threadsafe>true</threadsafe>
-     <runtime>java8</runtime>
-    </appengine-web-app>`
+    ```
+     <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+      <threadsafe>true</threadsafe>
+      <runtime>java8</runtime>
+     </appengine-web-app>
+    ```
  4. Run locally: `./mvnw -DskipTests spring-boot:run`
  5. `gcloud app create --region us-central`
  6. `./mvnw -DskipTests appengine:deploy`
@@ -41,8 +45,11 @@ Created based on [google code labs](https://codelabs.developers.google.com/codel
 
  ## Create Kubernetes cluster
  1. `gcloud config set compute/zone us-central1-a`
- 2. `gcloud container clusters create [CLUSTER-NAME]`
-  Ex: `gcloud beta container --project "$GOOGLE_CLOUD_PROJECT" clusters create "efx-poc-cluster" --zone "us-central1-a" --username "admin" --cluster-version "1.11.8-gke.6" --machine-type "n1-standard-1" --image-type "COS" --disk-type "pd-standard" --disk-size "20" --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "2" --enable-cloud-logging --enable-cloud-monitoring --no-enable-ip-alias --network "projects/$GOOGLE_CLOUD_PROJECT/global/networks/default" --subnetwork "projects/$GOOGLE_CLOUD_PROJECT/regions/us-central1/subnetworks/default" --enable-autoscaling --min-nodes "1" --max-nodes "3" --addons HorizontalPodAutoscaling,HttpLoadBalancing,KubernetesDashboard --enable-autoupgrade --enable-autorepair`
+ 2. `gcloud container clusters create [CLUSTER-NAME]` 
+  Ex: 
+  ```bash
+  gcloud beta container --project "$GOOGLE_CLOUD_PROJECT" clusters create "efx-poc-cluster" --zone "us-central1-a" --username "admin" --cluster-version "1.11.8-gke.6" --machine-type "n1-standard-1" --image-type "COS" --disk-type "pd-standard" --disk-size "20" --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "2" --enable-cloud-logging --enable-cloud-monitoring --no-enable-ip-alias --network "projects/$GOOGLE_CLOUD_PROJECT/global/networks/default" --subnetwork "projects/$GOOGLE_CLOUD_PROJECT/regions/us-central1/subnetworks/default" --enable-autoscaling --min-nodes "1" --max-nodes "3" --addons HorizontalPodAutoscaling,HttpLoadBalancing,KubernetesDashboard --enable-autoupgrade --enable-autorepair
+  ```
  3. `gcloud container clusters get-credentials efx-poc-cluster`
 
  ## Deploy Java Application on the Container:
@@ -111,6 +118,18 @@ Created based on [google code labs](https://codelabs.developers.google.com/codel
  19. `kubectl set image deployment employee-angular-web-server employee-angular-web-server=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-angular-web:0.1`
  20. `kubectl rollout status deployment employee-angular-web-server`
  21. `kubectl get deployments`
+
+## Spinnacker for Kubernetes [Option 1]
+ 1. Enable Required APIs
+      * [Pub/Sub API](https://console.cloud.google.com/apis/api/pubsub.googleapis.com)
+      * [Cloud build API](https://console.cloud.google.com/apis/api/cloudbuild.googleapis.com)
+      * [Kubernetes API](https://console.cloud.google.com/apis/api/container.googleapis.com)
+ 2. Deploy Spinnaker 
+```bash
+gsutil cp gs://gke-spinnaker-codelab/install.tgz . 
+tar -xvzf install.tgz
+ ```
+ 3. `./setup.sh`
 
  #### Troubleshooting [Common]
  ##### For permission issues
