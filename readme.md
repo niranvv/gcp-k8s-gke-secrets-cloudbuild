@@ -130,6 +130,66 @@ gsutil cp gs://gke-spinnaker-codelab/install.tgz .
 tar -xvzf install.tgz
  ```
  3. `./setup.sh`
+ ## Spinnacker for Kubernetes [Option 2]
+ Ref https://www.qwiklabs.com/focuses/552?parent=catalog
+  1. `gcloud config set compute/zone us-central1-f`
+  2. `gcloud container clusters create spinnaker-tutorial --machine-type=n1-standard-2 --enable-legacy-authorization`
+ ##### Configure identity and access management
+  3. `gcloud iam service-accounts create  spinnaker-storage-account --display-name spinnaker-storage-account`
+  4. `export SA_EMAIL=$(gcloud iam service-accounts list     --filter="displayName:spinnaker-storage-account"     --format='value(email)')`
+  5. `export PROJECT=$(gcloud info --format='value(config.project)')`
+  6. Bind the storage.admin role to your service account: `gcloud projects add-iam-policy-binding $PROJECT --role roles/storage.admin --member serviceAccount:$SA_EMAIL`
+  7. Download the service account key. In a later step, you will install Spinnaker and upload this key to Kubernetes Engine: `gcloud iam service-accounts keys create spinnaker-sa.json --iam-account $SA_EMAIL`
+ ### Deploying Spinnaker using Helm
+  8. `wget https://storage.googleapis.com/kubernetes-helm/helm-v2.5.0-linux-amd64.tar.gz`
+  9. `tar zxfv helm-v2.5.0-linux-amd64.tar.gz`
+  10. `cp linux-amd64/helm .`
+  11. Initialize Helm to install Tiller, the server side of Helm, in your cluster: `./helm init`
+  12. `./helm repo update`
+  13. Ensure that Helm is properly installed by running the following command. If Helm is correctly installed, v2.5.0 appears for both client and server. `./helm version`
+ ### Configure Spinnaker
+  14. In Cloud Shell, create a bucket for Spinnaker to store its pipeline configuration:
+  ```bash
+  export PROJECT=$(gcloud info \
+    --format='value(config.project)')
+  export BUCKET=$PROJECT-spinnaker-config
+  gsutil mb -c regional -l us-central1 gs://$BUCKET
+  ```
+  15. Create your configuration file by executing the following:
+  ```
+  export SA_JSON=$(cat spinnaker-sa.json)
+  cat > spinnaker-config.yaml <<EOF
+  storageBucket: $BUCKET
+  gcs:
+    enabled: true
+    project: $PROJECT
+    jsonKey: '$SA_JSON'
+  
+  # Disable minio the default
+  minio:
+    enabled: false
+
+  # Configure your Docker registries here
+  accounts:
+  - name: gcr
+    address: https://gcr.io
+    username: _json_key
+    password: '$SA_JSON'
+    email: 1234@5678.com
+  EOF
+  ```
+### Deploy the Spinnaker chart
+  16. `./helm install -n cd stable/spinnaker -f spinnaker-config.yaml --timeout 600 --version 0.3.1 `
+      > Note: You will see a warning here about a listener not getting created - you can ignore it. The installation will proceed after a few minutes.
+  17. After the command completes, run the following command to set up port forwarding to Spinnaker from Cloud Shell:
+  ```bash
+  export DECK_POD=$(kubectl get pods --namespace default -l "component=deck" \
+    -o jsonpath="{.items[0].metadata.name}")
+  kubectl port-forward --namespace default $DECK_POD 8080:9000 >> /dev/null &
+  ```
+  19. To open the Spinnaker user interface, click the Web Preview icon at the top of the Cloud Shell window and select Preview on port 8080
+
+
 
  #### Troubleshooting [Common]
  ##### For permission issues
