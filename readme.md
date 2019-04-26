@@ -132,8 +132,8 @@ tar -xvzf install.tgz
  3. `./setup.sh`
  ## Spinnacker for Kubernetes [Option 2]
  Ref https://www.qwiklabs.com/focuses/552?parent=catalog
-  1. `gcloud config set compute/zone us-central1-f`
-  2. `gcloud container clusters create spinnaker-tutorial --machine-type=n1-standard-2 --enable-legacy-authorization`
+  1. `gcloud config set compute/zone us-central1-a`
+  2. `gcloud container clusters create efx-poc-cluster --machine-type=n1-standard-2 --enable-legacy-authorization`
  ##### Configure identity and access management
   3. `gcloud iam service-accounts create  spinnaker-storage-account --display-name spinnaker-storage-account`
   4. `export SA_EMAIL=$(gcloud iam service-accounts list     --filter="displayName:spinnaker-storage-account"     --format='value(email)')`
