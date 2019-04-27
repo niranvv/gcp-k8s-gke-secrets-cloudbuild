@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: employee-frontend-prod
+  name: employee-frontend-prod
+spec:
+  ports:
+  - name: 80-80
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    load-balancer-employee-frontend-prod: "true"
+  sessionAffinity: None
+  type: LoadBalancer
