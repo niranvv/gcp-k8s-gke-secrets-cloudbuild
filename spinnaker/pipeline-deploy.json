@@ -36,9 +36,9 @@
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/PROJECT/employee-app:v.*",
+                "imageId": "gcr.io/PROJECT/employee-angular-web:v.*",
                 "registry": "gcr.io",
-                "repository": "PROJECT/employee-app",
+                "repository": "PROJECT/employee-angular-web",
                 "tag": "v.*"
               },
               "imagePullPolicy": "ALWAYS",
@@ -47,7 +47,7 @@
                 "memory": null
               },
               "livenessProbe": null,
-              "name": "PROJECT-employee-app",
+              "name": "PROJECT-employee-angular-web",
               "ports": [
                 {
                   "containerPort": 8080,
@@ -141,9 +141,9 @@
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/PROJECT/employee-app:v.*",
+                "imageId": "gcr.io/PROJECT/employee-java-api:v.*",
                 "registry": "gcr.io",
-                "repository": "PROJECT/employee-app",
+                "repository": "PROJECT/employee-java-api",
                 "tag": "v.*"
               },
               "imagePullPolicy": "ALWAYS",
@@ -152,7 +152,7 @@
                 "memory": null
               },
               "livenessProbe": null,
-              "name": "PROJECT-employee-app",
+              "name": "PROJECT-employee-java-api",
               "ports": [
                 {
                   "containerPort": 8080,
@@ -238,7 +238,7 @@
           "fromTrigger": true,
           "organization": "PROJECT",
           "registry": "gcr.io",
-          "repository": "PROJECT/employee-app",
+          "repository": "PROJECT/employee-java-api",
           "tag": "v.*"
         },
         "name": "1494826281215",
@@ -272,7 +272,7 @@
           "fromTrigger": true,
           "organization": "PROJECT",
           "registry": "gcr.io",
-          "repository": "PROJECT/employee-app",
+          "repository": "PROJECT/employee-java-api",
           "tag": "v.*"
         },
         "name": "1494826281215",
@@ -327,16 +327,16 @@
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/PROJECT/employee-app:v.*",
+                "imageId": "gcr.io/PROJECT/employee-java-api:v.*",
                 "registry": "gcr.io",
-                "repository": "PROJECT/employee-app",
+                "repository": "PROJECT/employee-java-api",
                 "tag": "v.*"
               },
               "imagePullPolicy": "ALWAYS",
               "lifecycle": null,
               "limits": null,
               "livenessProbe": null,
-              "name": "PROJECT-employee-app",
+              "name": "PROJECT-employee-java-api",
               "ports": [
                 {
                   "containerPort": 80,
@@ -434,16 +434,16 @@
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/PROJECT/employee-app:v.*",
+                "imageId": "gcr.io/PROJECT/employee-angular-web:v.*",
                 "registry": "gcr.io",
-                "repository": "PROJECT/employee-app",
+                "repository": "PROJECT/employee-angular-web",
                 "tag": "v.*"
               },
               "imagePullPolicy": "ALWAYS",
               "lifecycle": null,
               "limits": null,
               "livenessProbe": null,
-              "name": "PROJECT-employee-app",
+              "name": "PROJECT-employee-angular-web",
               "ports": [
                 {
                   "containerPort": 80,
@@ -522,7 +522,7 @@
       "organization": "PROJECT",
       "pipeline": "61372c70-62af-422f-9565-e1975a758612",
       "registry": "gcr.io",
-      "repository": "PROJECT/employee-app",
+      "repository": "PROJECT/employee-angular-web",
       "status": [
         "successful"
       ],
