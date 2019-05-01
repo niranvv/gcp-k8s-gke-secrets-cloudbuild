@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "test-ci-cd-k8s-1",
+  "private_key_id": "b09c84c51349da288a7afe6d9234f1f4b06a19ba",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCiOdmRUaEPz7C/\n+6PuLXVESiWG3KJm0UUZN40ES31SB3d9k479uBKfQaueJ6jkELjAVIW66+ySmOUO\nPiA0c0B/I3AjXyvK1ctJnD64A8yQXl9u5PQdnJyp8Grm6OQCTZCfVgn3zjQ3/B8W\nzPYLnHSx45S9377qEz1Tw5BW8HSoZwcs0/87x6im2dADUmttQkFPzZUVswEBRe3g\nJso2P5lZRHfTR78zuWX3ysSvIvVdE5VkBX7GQhZ+XmSUlB2xEW3Z28aPBAnTktjE\nBcIOi05h+QK0kTyD4FBA4G6hIOEgI2E1vZ9sjBRlhR2kBiNyBgMzwF+pBiJKKQ+0\nLoPEXph7AgMBAAECggEAAXYw+ii4oUpXRtuPFhHNyTA711O8mN2Q2FHSUPQXLHqJ\nvpVqR+n1LP8r+zBTSr7F02HPlKgUiRuckLzJkH9rWNnqZD8yx1CW1NJ2FDVgjfpz\ntK2Wb3/eP3+9jtgRWd32DCF71IJEoS6B3zQ4kVE3EfVBfVZ7Q2Op/Uu5TLc87dmA\nHse3/XTJqy+id2XKrPZw40eXczmtPi4CFacN0H3v47jTCRSzWn5A6z/XHAYaduTR\npRF6xs/6pXyotelfT9cU7+o3NeKOW2zE7N4AfYtUNOgikyn36JUMfK4xVce9Sa4F\nzjZ0GeJcL8BKrf0opldabfaM+VQdnFrPXYVjLdcIpQKBgQDYKsuFWapJh+70AkxE\ny7eWO0aBBE5/6iX5kUfcXrIkfvK6zqceJjWjKW/Mfih4FyXsvZT5J2bCONI8TscT\ntIVjK8TVZla03h8Vj++t9xkVyOPeyI8yVSkx/IcfPikctxuQS7hagX2roJR4A1M0\n3a9sJPuUDMMxwWajfWlbrzKfnQKBgQDAHn/L9idJ45vkAqVxFotiJr6wAG4ORFHp\nne4d8awSX1IPbhcC8l9h6R80E9bx5OlOhk3oH0muPnqDgBMsk628pVpNPZZ3bsk7\nqnjEvEQodISQ00coEvzi/Zr7uhNEVkEMbC8vh1xqBYuqDuLG6U8aR8lf7ij0O2iW\nH3d3wPl49wKBgQCo+8td01prYPhLiABXR2mc53mWIee71y8YiZnDi8N3BEZ8AlBi\nITyM8DeVhIneVzoud4WdwE90RTcULgEyRkx/2hdlOztM6Ncj5AFZ3XCetwxrfB11\nG1241dBLfCxnZj0F8CuNlOzI3h8yMmc5TJN11vNUKSXuH2I9LCzQn4TTgQKBgBc2\n2DxeBwtPnHOlujX7AmaexeXgd2vz523yLmah4CfsKq9Anzk07j+XerTBPPTHs0VQ\nxzMoLLAITqd7H1YAljq4RDwXGApgcaJrC+LB2P6GbcpOLUfzW2lWOZb3OgLE5WFJ\n5T25/nm1J9YprE9au7syN2wHDB3O2+lf7gCjacGrAoGBAJkL5biP5CB7APULf1hq\nCOq4JVW57HYKhDiVrT1IVylx0DizNMUfcxh0i1VhKNVS3XmBMgq1wPXgpttC5ibu\ngB1JEFtp+M85dqaBXOJphUi7UxXILfXzUl/Ohj+WszfGtSkWsowbgMFovQcgk5bk\nRwqGhKJcXpVXQBVf7TO87MBX\n-----END PRIVATE KEY-----\n",
+  "client_email": "k8s-stackdriver-logger-java@test-ci-cd-k8s-1.iam.gserviceaccount.com",
+  "client_id": "104028296327395896503",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/k8s-stackdriver-logger-java%40test-ci-cd-k8s-1.iam.gserviceaccount.com"
+}

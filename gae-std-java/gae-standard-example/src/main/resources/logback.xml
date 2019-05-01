@@ -21,8 +21,8 @@
             <level>INFO</level>
         </filter>
         <log>application.log</log> <!-- Optional : default java.log -->
-        <resourceType>default</resourceType> <!-- Optional : default: auto-detected, fallback: global -->
-        <enhancer>com.ust.efx.employee.logback.enhancers.ExampleEnhancer</enhancer> <!-- Optional -->
+        <!-- <resourceType>default</resourceType>  Optional : default: auto-detected, fallback: global -->
+        <!-- <enhancer>com.ust.efx.employee.logback.enhancers.ExampleEnhancer</enhancer>  Optional -->
         <flushLevel>WARN</flushLevel> <!-- Optional : default ERROR -->
     </appender>
 
