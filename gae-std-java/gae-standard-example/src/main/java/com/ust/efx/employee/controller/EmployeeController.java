@@ -1,5 +1,7 @@
 package com.ust.efx.employee.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +21,9 @@ import javax.validation.Valid;
 @RequestMapping("/api")
 public class EmployeeController {
 
+    private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class.getName());
+
+
     @Autowired
     EmployeeRepository employeeRepository;
 
@@ -29,6 +34,7 @@ public class EmployeeController {
 
     @GetMapping("/employees")
     public Page<Employee> getAllEmployees(@RequestParam int pagenumber,@RequestParam int size) {
+        logger.info(String.format("Logging INFO with Logback. Method name:api=getAllEmployees;pagenumber=%s;size=%s;", pagenumber, size));
         Pageable pageable = PageRequest.of(pagenumber, size);
         Page<Employee> pagedEmployees = employeeRepository.findAll(pageable);
         return pagedEmployees;
@@ -36,11 +42,13 @@ public class EmployeeController {
 
     @PostMapping("/employees")
     public Employee createEmployee(@Valid @RequestBody Employee employee) {
+        logger.info(String.format("Logging INFO with Logback. Method name:api=createEmployee"));
         return employeeRepository.save(employee);
     }
 
     @GetMapping("/employees/{id}")
     public Employee getEmployeeById(@PathVariable(value = "id") Long employeeId) {
+        logger.info(String.format("Logging INFO with Logback. Method name:api=getEmployeeById"));
         return employeeRepository.findById(employeeId)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee", "id", employeeId));
     }
@@ -61,6 +69,7 @@ public class EmployeeController {
 
     @DeleteMapping("/employees/{id}")
     public ResponseEntity<?> deleteEmployee(@PathVariable(value = "id") Long employeeId) {
+        logger.info(String.format("Logging INFO with Logback. Method name:api=deleteEmployee"));
         Employee employee = employeeRepository.findById(employeeId)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee", "id", employeeId));
 

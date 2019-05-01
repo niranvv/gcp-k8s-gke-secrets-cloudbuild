@@ -94,6 +94,10 @@ Created based on [google code labs](https://codelabs.developers.google.com/codel
  8. `docker run -p 8080:8080 -d gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:0.1.0`
  9. `curl http://localhost:8080`
 
+ ## Add Stackdriver Logging
+ 1. Config details are available [here](https://cloud.google.com/logging/docs/setup/java)
+ 2. On Google Kubernetes Engine, you must add the logging.write access scope when creating the cluster: `gcloud container clusters create example-cluster-name --scopes https://www.googleapis.com/auth/logging.write`
+
 
  ## Deploy Angular Application on the Container:
  1. `npm install -g @angular/cli@latest`
