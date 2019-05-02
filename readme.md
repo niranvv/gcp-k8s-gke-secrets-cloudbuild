@@ -53,8 +53,8 @@ Created based on [google code labs](https://codelabs.developers.google.com/codel
  3. `gcloud container clusters get-credentials efx-poc-cluster`
 
  ## Deploy Java Application on the Container:
- 1. `./mvnw -DskipTests spring-boot:run`
- ### Package the Java application as a Docker container [Option 1 - using Jib]
+ 1. **(Not Required as per latest Dockerfile)** `./mvnw -DskipTests spring-boot:run`
+ ### **(Not Required as per latest Dockerfile)** Package the Java application as a Docker container [Option 1 - using Jib]
  2. Package the app: `./mvnw -DskipTests package`
  3. Use **Jib** to create the container image and push it to the Container Registry: 
     `./mvnw -DskipTests com.google.cloud.tools:jib-maven-plugin:build -Dimage=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:v1`
@@ -66,32 +66,34 @@ Created based on [google code labs](https://codelabs.developers.google.com/codel
  7. `kubectl get pods`
  8. `kubectl expose deployment employee-java-api-server --type=LoadBalancer`
 ### Package the Java application as a Docker container [Option 2]
- 1. Package: `mvn package` & Run `java -jar target/employee-0.0.1-SNAPSHOT.war`
+ 1. **(Not Required as per latest Dockerfile)** Package: `mvn package` & Run `java -jar target/employee-0.0.1-SNAPSHOT.war`
     Alternatively, you can run the app without packaging it using: `mvn spring-boot:run`
- 2. `docker image build -t employee-java-api:0.1.0 .`
- 3. `docker tag employee-java-api:0.1.0 gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:0.1.0`
- 4. `docker images`
- 5. `docker push gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:0.1.0`
- 6. `docker stop $(docker ps -q)`
- 7. `docker rm $(docker ps -aq)`
+ 2. **(Not Required as per latest Dockerfile)** `docker image build -t employee-java-api:v1.0.1 .`
+ 3. **(Not Required as per latest Dockerfile)** `docker tag employee-java-api:v1.0.1 gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:v1.0.1`
+ 4. **(Not Required as per latest Dockerfile)** `docker images`
+ 5. **(Not Required as per latest Dockerfile)** `docker push gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:v1.0.1`
+ 6. **(Not Required as per latest Dockerfile)** `docker stop $(docker ps -q)`
+ 7. **(Not Required as per latest Dockerfile)** `docker rm $(docker ps -aq)`
  8. `gcloud config set compute/zone us-central1-a`
  9. `gcloud container clusters get-credentials efx-poc-cluster`
- 10. `kubectl run employee-java-api-server --image=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:0.1.0 --port 8080`
+ 10. `kubectl run employee-java-api-server --image=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:v1.0.1 --port 8080`
  11. `kubectl expose deployment employee-java-api-server --type="LoadBalancer"`
  #### Update the image [Option 2]
- 1. `kubectl set image deployment employee-java-api-server employee-java-api-server=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:0.1.0`
- 2. `kubectl rollout status deployment employee-java-api-server`
- 3. `kubectl get deployments`
+ 1. `gcloud config set compute/zone us-central1-a`
+ 2. `gcloud container clusters get-credentials efx-poc-cluster`
+ 3. `kubectl set image deployment employee-java-api-server employee-java-api-server=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:v1.0.1`
+ 4. `kubectl rollout status deployment employee-java-api-server`
+ 5. `kubectl get deployments`
  #### [Optional] To Test  after removing local Child images
  1. `docker stop $(docker ps -q)`
  2. `docker rm $(docker ps -aq)`
- 3. `docker rmi employee-java-api:0.1.0 gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api employee-java-api:0.1.0`
+ 3. `docker rmi employee-java-api:v1.0.1 gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api employee-java-api:v1.0.1`
  4. `docker rmi openjdk:8-jre-alpine`
  5. `docker rmi $(docker images -aq) --force # remove remaining images`
  6. `docker images`
 ##### [Optional] Now we have pseudo env.. Test docker
- 7. `docker pull gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:0.1.0`
- 8. `docker run -p 8080:8080 -d gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:0.1.0`
+ 7. `docker pull gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:v1.0.1`
+ 8. `docker run -p 8080:8080 -d gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:v1.0.1`
  9. `curl http://localhost:8080`
 
  ## Add Stackdriver Logging
@@ -100,28 +102,32 @@ Created based on [google code labs](https://codelabs.developers.google.com/codel
 
 
  ## Deploy Angular Application on the Container:
- 1. `npm install -g @angular/cli@latest`
- 2. `npm install -g http-server`
- 3. `cd InfiniteScroll/`
- 4. `ng build --prod`
- 5. To Test Prod Build `http-server ./dist`
- 6. `docker image build -t employee-angular-web:0.1 .`
- 7. `docker image ls`
- 8. `docker run -p 3000:80 --rm employee-angular-web:0.1` OR `docker run -d  -p 8080:8080 employee-angular-web:0.1`
- 9. `docker ps`
- 10. `docker history employee-angular-web:0.1`
- 11. `docker stop [container_id]`
- 12. `docker tag employee-angular-web:0.1 gcr.io/$GOOGLE_CLOUD_PROJECT/employee-angular-web:0.1`
- 13. `docker images`
- 14. `docker push gcr.io/$GOOGLE_CLOUD_PROJECT/employee-angular-web:0.1`
- 15. `docker stop $(docker ps -q)`
- 16. `docker rm $(docker ps -aq)`
- 17. `kubectl run employee-angular-web-server --image=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-angular-web:0.1 --port 80`
- 18. `kubectl expose deployment employee-angular-web-server --type="LoadBalancer"`
+ 1. **(Not Required as per latest Dockerfile)** `npm install -g @angular/cli@latest`
+ 2. **(Not Required as per latest Dockerfile)** `npm install -g http-server`
+ 3. **(Not Required as per latest Dockerfile)** `cd InfiniteScroll/`
+ 4. **(Not Required as per latest Dockerfile)** `ng build --prod`
+ 5. **(Not Required as per latest Dockerfile)** To Test Prod Build `http-server ./dist`
+ 6. **(Not Required as per latest Dockerfile)** `docker image build -t employee-angular-web:v1.0.1 .`
+ 7. **(Not Required as per latest Dockerfile)** `docker image ls`
+ 8. **(Not Required as per latest Dockerfile)** `docker run -p 3000:80 --rm employee-angular-web:v1.0.1` OR `docker run -d  -p 8080:8080 employee-angular-web:v1.0.1`
+ 9. **(Not Required as per latest Dockerfile)** `docker ps`
+ 10. **(Not Required as per latest Dockerfile)** `docker history employee-angular-web:v1.0.1`
+ 11. **(Not Required as per latest Dockerfile)** `docker stop [container_id]`
+ 12. **(Not Required as per latest Dockerfile)** `docker tag employee-angular-web:v1.0.1 gcr.io/$GOOGLE_CLOUD_PROJECT/employee-angular-web:v1.0.1`
+ 13. **(Not Required as per latest Dockerfile)** `docker images`
+ 14. **(Not Required as per latest Dockerfile)** `docker push gcr.io/$GOOGLE_CLOUD_PROJECT/employee-angular-web:v1.0.1`
+ 15. **(Not Required as per latest Dockerfile)** `docker stop $(docker ps -q)`
+ 16. **(Not Required as per latest Dockerfile)** `docker rm $(docker ps -aq)`
+ 17. `gcloud config set compute/zone us-central1-a`
+ 18. `gcloud container clusters get-credentials efx-poc-cluster`
+ 19. `kubectl run employee-angular-web-server --image=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-angular-web:v1.0.1 --port 80`
+ 20. `kubectl expose deployment employee-angular-web-server --type="LoadBalancer"`
  ### Update the image
- 19. `kubectl set image deployment employee-angular-web-server employee-angular-web-server=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-angular-web:0.1`
- 20. `kubectl rollout status deployment employee-angular-web-server`
- 21. `kubectl get deployments`
+ 21. `gcloud config set compute/zone us-central1-a`
+ 22. `gcloud container clusters get-credentials efx-poc-cluster`
+ 23. `kubectl set image deployment employee-angular-web-server employee-angular-web-server=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-angular-web:v1.0.1`
+ 24. `kubectl rollout status deployment employee-angular-web-server`
+ 25. `kubectl get deployments`
 
 ## Spinnacker for Kubernetes [Option 1]
  1. Enable Required APIs
