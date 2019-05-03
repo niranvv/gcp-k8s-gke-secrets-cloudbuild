@@ -130,6 +130,7 @@ Created based on [google code labs](https://codelabs.developers.google.com/codel
  25. `kubectl get deployments`
 
 ## Spinnacker for Kubernetes [Option 1]
+Ref: https://codelabs.developers.google.com/codelabs/cloud-spinnaker-kubernetes-cd/#0
  1. Enable Required APIs
       * [Pub/Sub API](https://console.cloud.google.com/apis/api/pubsub.googleapis.com)
       * [Cloud build API](https://console.cloud.google.com/apis/api/cloudbuild.googleapis.com)
