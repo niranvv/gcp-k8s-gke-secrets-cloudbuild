@@ -6,9 +6,10 @@ The main highlights of the application are as follows:
  1. Dockerized Angular 7 App with Angular Material in One Kubernetes Cluster
  2. Dockerized Java API (Spring Boot, JPA, Hibernate Restful CRUD API) on another Kubernetes Cluster
  3. Cloud SQL (around 1,00,000 records)
- 4. Jenkins for CI
- 5. Spinnaker for CD
- 6. Helm for setting up environments for Jenkins & Spinnaker
+ 4. Logs will be stored in StackDriver
+ 5. Jenkins for CI
+ 6. Spinnaker for CD
+ 7. Helm for setting up environments for Jenkins & Spinnaker
  
 Detailed Steps:
  1.	Developer do the code changes and adding some “tags” (say v1.0.1) and commits it 
