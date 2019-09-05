@@ -2,6 +2,26 @@
 
 Hi! I'm **Niran**. This is a test project with Google Cloud
 
+The main highlights of the application are as follows:
+ 1. Dockerized Angular 7 App with Angular Material in One Kubernetes Cluster
+ 2. Dockerized Java API (Spring Boot, JPA, Hibernate Restful CRUD API) on another Kubernetes Cluster
+ 3. Cloud SQL (around 1,00,000 records)
+ 4. Jenkins for CI
+ 5. Spinnaker for CD
+ 6. Helm for setting up environments for Jenkins & Spinnaker
+ 
+Detailed Steps:
+ 1.	Developer do the code changes and adding some “tags” (say v1.0.1) and commits it 
+ 2.	Code is getting pushed into “GitHub” (Can be changed to Bit Bucket or Cloud Source Repositories)
+ 3.	“Container Builder” will detect the new Git tag and trigger an automated build which creates a Docker image and run Unit Tests – This can be replaced with Jenkins
+ 4.	Docker image will be pushed into “Container Registry” (Currently Google Container Registry)
+ 5.	This will add a message into “Cloud Pub Sub” with the details about the new image
+ 6.	“Spinnaker” running on the Kubernetes cluster will detect the new image via Pub Sub Subscription (This can be changed to directly monitor the container registry)
+ 7.	“Spinnaker” will do an Automated Deployment to the “Staging” environment, which is running on Kubernetes
+ 8.	Admin can check approve the deployment to “Canary” Environment after doing some rounds of checks via “Spinnaker”. This will do a the rolling update on a small set of Canary testers 
+ 9.	Admin will monitor the Canary builds and approve the deployment to the “Production” via “Spinnaker”.
+ 10.	Requests coming to the Server will be routed based on the Load Balancer provided by Kubernetes 
+
 # Adding domain in GAE
 
  1. Modify "**dispatch.yaml**" in root with the new domain
