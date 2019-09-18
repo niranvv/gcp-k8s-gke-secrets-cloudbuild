@@ -1,0 +1,15 @@
+#
+# Build stage
+#
+FROM maven:3.5-jdk-8-alpine AS build
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
+
+#
+# Package stage
+#
+FROM openjdk:8
+COPY --from=build /home/app/target/java-api-0.1.0.jar /usr/local/lib/java-api.war
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/usr/local/lib/java-api.war"]
