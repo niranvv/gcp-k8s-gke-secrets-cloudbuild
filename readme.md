@@ -225,8 +225,8 @@ Ref: https://codelabs.developers.google.com/codelabs/cloud-spinnaker-kubernetes-
 #### Java Commands
 * `mvn compile`
 * `mvn package`
-* `./mvnw clean package or mvn clean package`
-* `./mvnw spring-boot:run or mvn spring-boot:run`
+* `./mvnw clean package` or `mvn clean package`
+* `./mvnw spring-boot:run` or `mvn spring-boot:run`
 * `java -jar target/java-api-0.1.0.jar`
 #### Docker & GKE Commands
 * `docker build . -t java-api:0.1`
