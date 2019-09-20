@@ -221,6 +221,21 @@ Ref: https://codelabs.developers.google.com/codelabs/cloud-spinnaker-kubernetes-
 ### Configure your build triggers
   20. In the Cloud Platform Console, click Navigation menu > Cloud Build > Triggers. Click Create trigger.
 
+### For Reference
+#### Java Commands
+* `mvn compile`
+* `mvn package`
+* `./mvnw clean package or mvn clean package`
+* `./mvnw spring-boot:run or mvn spring-boot:run`
+* `java -jar target/java-api-0.1.0.jar`
+#### Docker & GKE Commands
+* `docker build . -t java-api:0.1`
+* `docker tag java-api:0.1 gcr.io/$GOOGLE_CLOUD_PROJECT/java-api:0.1`
+* `docker push gcr.io/$GOOGLE_CLOUD_PROJECT/java-api:0.1`
+* `gcloud config set compute/zone us-central1-a`
+* `gcloud container clusters get-credentials my-cluster`
+* `kubectl run java-api --image=gcr.io/$GOOGLE_CLOUD_PROJECT/java-api:0.1 --port 8080`
+* `kubectl expose deployment java-api --type="LoadBalancer"`
 
  #### Troubleshooting [Common]
  ##### For permission issues
