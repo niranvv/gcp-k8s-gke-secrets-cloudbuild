@@ -157,9 +157,10 @@ Ref: https://codelabs.developers.google.com/codelabs/cloud-spinnaker-kubernetes-
       * [Cloud build API](https://console.cloud.google.com/apis/api/cloudbuild.googleapis.com)
       * [Kubernetes API](https://console.cloud.google.com/apis/api/container.googleapis.com)
  2. `cd spinnaker`
- 3. `./setup.sh`
- 4. `./connect.sh`
- 5. Preview on Port 8080 on Cloud Shell
+ 3. Modify Cluster Name "GKE_CLUSTER" & "ZONE"
+ 4. `./setup.sh`
+ 5. `./connect.sh`
+ 6. Preview on Port 8080 on Cloud Shell
  ## Spinnacker for Kubernetes [Option 2]
  Ref https://www.qwiklabs.com/focuses/552?parent=catalog
   1. `gcloud config set compute/zone us-central1-f`
