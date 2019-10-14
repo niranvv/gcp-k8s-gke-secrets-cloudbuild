@@ -9,7 +9,7 @@ handlers:
   upload: www/robots.txt
 
 # file with extensions (longer cache period)
-- url: /(.*\.(css|js|woff|woff2|ico|png|jpg))
+- url: /(.*\.(css|js|woff|woff2|ico|png|jpg|ico|mp4))
   static_files: www/\1
   upload: www/(.*)
   expiration: "14d"
