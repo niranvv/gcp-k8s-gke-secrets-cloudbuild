@@ -3,3 +3,5 @@ dispatch:
      service: angpoc
    - url: "niran.in/*"
      service: niran
+   - url: "www.niran.in/*"
+     service: niran
