@@ -2,6 +2,9 @@
 *.js linguist-detectable=false
 *.html linguist-detectable=false
 *.xml linguist-detectable=false
+*.sql linguist-detectable=false
+
+*.java linguist-language=Java
 
 # Java sources
 *.java          text diff=java
