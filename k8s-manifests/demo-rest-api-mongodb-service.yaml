@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rest-api-mongodb-service
+  #namespace: rfi-niran
+  labels:
+    app: rest-api-mongodb
+    owner: niran
+spec:
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: rest-api-mongodb
+    owner: niran
+  type: LoadBalancer
+  loadBalancerIP: 

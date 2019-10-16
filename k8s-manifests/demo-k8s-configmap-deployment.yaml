@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-k8s-configmap
+  namespace: rfi-niran
+  labels:
+    app: demo-k8s-configmap
+    owner: niran
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-k8s-configmap
+      owner: niran
+  template:
+    metadata:
+      labels:
+        app: demo-k8s-configmap
+        owner: niran
+    spec:
+      containers:
+      - name: demo-k8s-configmap-container
+        image: gcr.io/opportune-mile-246823/demo-k8s-configmap
+        env:
+        - name: WELCOME_MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: demo-k8s-configmap-config
+              key: welcome.message
+        # readinessProbe:
+        #   httpGet:
+        #     path: /actuator/health
+        #     port: 8080
+        #   initialDelaySeconds: 30
+        #   timeoutSeconds: 5
+        # livenessProbe:
+        #   httpGet:
+        #     path: /actuator/liveness
+        #     port: 8080
+        #   initialDelaySeconds: 20
+        #   timeoutSeconds: 10
+        #   failureThreshold: 10

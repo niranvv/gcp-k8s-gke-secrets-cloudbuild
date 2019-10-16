@@ -1,0 +1,15 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ["build", "-t", "gcr.io/$PROJECT_ID/demo-rest-api-mongodb:$REVISION_ID", "."]
+  dir: 'demo-rest-api-mongodb'
+- name: 'gcr.io/cloud-builders/docker'
+  args: ["push", "gcr.io/$PROJECT_ID/demo-rest-api-mongodb:$REVISION_ID"]
+- name: 'gcr.io/cloud-builders/gke-deploy:stable'
+  args:
+  - 'run'
+  - '--filename=k8s-manifests/demo-rest-api-mongodb-deployment.yaml'
+  - '--image=gcr.io/$PROJECT_ID/demo-rest-api-mongodb:$REVISION_ID'
+  - '--location=us-central1-a'
+  - '--cluster=niran-poc-cluster'
+  - '--namespace=ns-niran-poc'
+images: ['gcr.io/$PROJECT_ID/demo-rest-api-mongodb:$REVISION_ID']

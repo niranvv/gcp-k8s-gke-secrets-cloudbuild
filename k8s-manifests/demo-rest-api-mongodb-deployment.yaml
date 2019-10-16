@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-rest-api-mongodb
+  namespace: rfi-niran
+  labels:
+    app: demo-rest-api-mongodb
+    owner: niran
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-rest-api-mongodb
+      owner: niran
+  template:
+    metadata:
+      labels:
+        app: demo-rest-api-mongodb
+        owner: niran
+    spec:
+      containers:
+      - name: demo-rest-api-mongodb-container
+        image: gcr.io/opportune-mile-246823/demo-rest-api-mongodb
+        # readinessProbe:
+        #   httpGet:
+        #     path: /actuator/health
+        #     port: 8080
+        #   initialDelaySeconds: 30
+        #   timeoutSeconds: 5
+        # livenessProbe:
+        #   httpGet:
+        #     path: /actuator/liveness
+        #     port: 8080
+        #   initialDelaySeconds: 20
+        #   timeoutSeconds: 10
+        #   failureThreshold: 10

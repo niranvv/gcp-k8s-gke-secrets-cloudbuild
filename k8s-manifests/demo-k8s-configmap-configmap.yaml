@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-k8s-configmap-config
+  namespace: rfi-niran
+  labels:
+    app: rfi-frontend
+    owner: niran
+data:
+  welcome.message: Message from configMap literal(welcome.message)
