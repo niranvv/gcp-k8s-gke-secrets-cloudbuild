@@ -69,9 +69,9 @@ Created based on [google code labs](https://codelabs.developers.google.com/codel
  2. `gcloud container clusters create [CLUSTER-NAME]` 
   Ex: 
   ```bash
-  gcloud beta container --project "$GOOGLE_CLOUD_PROJECT" clusters create "efx-poc-cluster" --zone "us-central1-a" --username "admin" --cluster-version "1.11.8-gke.6" --machine-type "n1-standard-1" --image-type "COS" --disk-type "pd-standard" --disk-size "20" --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "2" --enable-cloud-logging --enable-cloud-monitoring --no-enable-ip-alias --network "projects/$GOOGLE_CLOUD_PROJECT/global/networks/default" --subnetwork "projects/$GOOGLE_CLOUD_PROJECT/regions/us-central1/subnetworks/default" --enable-autoscaling --min-nodes "1" --max-nodes "3" --addons HorizontalPodAutoscaling,HttpLoadBalancing,KubernetesDashboard --enable-autoupgrade --enable-autorepair
+  gcloud beta container --project "$GOOGLE_CLOUD_PROJECT" clusters create "niran-poc-cluster" --zone "us-central1-a" --username "admin" --cluster-version "1.11.8-gke.6" --machine-type "n1-standard-1" --image-type "COS" --disk-type "pd-standard" --disk-size "20" --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "2" --enable-cloud-logging --enable-cloud-monitoring --no-enable-ip-alias --network "projects/$GOOGLE_CLOUD_PROJECT/global/networks/default" --subnetwork "projects/$GOOGLE_CLOUD_PROJECT/regions/us-central1/subnetworks/default" --enable-autoscaling --min-nodes "1" --max-nodes "3" --addons HorizontalPodAutoscaling,HttpLoadBalancing,KubernetesDashboard --enable-autoupgrade --enable-autorepair
   ```
- 3. `gcloud container clusters get-credentials efx-poc-cluster`
+ 3. `gcloud container clusters get-credentials niran-poc-cluster`
 
  ## Deploy Java Application on the Container:
  1. **(Not Required as per latest Dockerfile)** `./mvnw -DskipTests spring-boot:run`
@@ -96,12 +96,12 @@ Created based on [google code labs](https://codelabs.developers.google.com/codel
  6. **(Not Required as per latest Dockerfile)** `docker stop $(docker ps -q)`
  7. **(Not Required as per latest Dockerfile)** `docker rm $(docker ps -aq)`
  8. `gcloud config set compute/zone us-central1-a`
- 9. `gcloud container clusters get-credentials efx-poc-cluster`
+ 9. `gcloud container clusters get-credentials niran-poc-cluster`
  10. `kubectl run employee-java-api-server --image=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:v1.0.1 --port 8080`
  11. `kubectl expose deployment employee-java-api-server --type="LoadBalancer"`
  #### Update the image [Option 2]
  1. `gcloud config set compute/zone us-central1-a`
- 2. `gcloud container clusters get-credentials efx-poc-cluster`
+ 2. `gcloud container clusters get-credentials niran-poc-cluster`
  3. `kubectl set image deployment employee-java-api-server employee-java-api-server=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-java-api:v1.0.1`
  4. `kubectl rollout status deployment employee-java-api-server`
  5. `kubectl get deployments`
@@ -140,12 +140,12 @@ Created based on [google code labs](https://codelabs.developers.google.com/codel
  15. **(Not Required as per latest Dockerfile)** `docker stop $(docker ps -q)`
  16. **(Not Required as per latest Dockerfile)** `docker rm $(docker ps -aq)`
  17. `gcloud config set compute/zone us-central1-a`
- 18. `gcloud container clusters get-credentials efx-poc-cluster`
+ 18. `gcloud container clusters get-credentials niran-poc-cluster`
  19. `kubectl run employee-angular-web-server --image=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-angular-web:v1.0.1 --port 80`
  20. `kubectl expose deployment employee-angular-web-server --type="LoadBalancer"`
  ### Update the image
  21. `gcloud config set compute/zone us-central1-a`
- 22. `gcloud container clusters get-credentials efx-poc-cluster`
+ 22. `gcloud container clusters get-credentials niran-poc-cluster`
  23. `kubectl set image deployment employee-angular-web-server employee-angular-web-server=gcr.io/$GOOGLE_CLOUD_PROJECT/employee-angular-web:v1.0.1`
  24. `kubectl rollout status deployment employee-angular-web-server`
  25. `kubectl get deployments`
