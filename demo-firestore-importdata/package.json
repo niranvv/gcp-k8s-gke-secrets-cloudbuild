@@ -1,0 +1,17 @@
+{
+  "name": "demo-firestore-importdata",
+  "version": "1.0.0",
+  "description": "This is a test node project to import CSV data to firestore data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Niran Vijayakumar",
+  "license": "",
+  "dependencies": {
+    "@google-cloud/firestore": "^2.2.9",
+    "csv-parse": "^4.4.5",
+    "faker": "^4.1.0"
+  }
+}
