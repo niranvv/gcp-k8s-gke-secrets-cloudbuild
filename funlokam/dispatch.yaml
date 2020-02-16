@@ -1,0 +1,5 @@
+dispatch:
+   - url: "funlokam.com/*"
+     service: funlokam
+   - url: "www.funlokam.com/*"
+     service: funlokam
